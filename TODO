@@ -1,0 +1,41 @@
+---[ Features I haven't implemented yet ]---------------------------------------
+* Add threads/forks so that upcron.pl is efficient. Have one process/thread be busy constantly downloading news listings, and after each download is complete send a message to the reader/parser to parse the downloaded data. Reader should have a queue of listings to read. This could even be a 3-tier system: Download, Parse, Insertion. 
+  Download --> Downloads unparsed data from sources, uses module to "grab" data
+  Parse -----> Uses RSS or other means to make meaningful sense of the data
+  Insertion -> Takes the data from Parse, and uploads it into the database.
+
+* Admin section.
+  - Manage Users, Prune Database, View Statistics, Add Feeds.
+
+---[ Fixes, changes, etc. ] ----------------------------------------------------
+* Rewrite mynews.pl to use divs instead of tables, should be less overhead. 
+  - Is this worth it? It might break browsers like lynx and w3m, test first.
+* Multiple-page configuration.
+  - Personal Settings, News Sources, Filters, More?
+* NNTP//RSS - it looks neat, get it running. (Requires jakarta Ant to build)
+  - Generate RSS feeds for nonRSS news feeds?
+* Rewrite how viewdata is handled, introduce 2 ways of storage.
+  1) newslisting ID
+  2) unixtime dating - this will make sql queries faster.
+* Make it so that index.pl takes a 3rd method from the pages: sidebar
+  - Just in case we want a sidebar (like... you know... the config page)
+
+---[ Bugs!!! ]------------------------------------------------------------------
+* cleanup.pl unmarks incorrect news, so it's probably removing the wrong news
+  articles, too.
+
+---[ Smaller, easier to implement things ]--------------------------------------
+
+: User friendliness
+- favorites. Let news be filed under user-specified categories
+- custom listing: Allow subscription to user-specified keywords (Linux, Oracle, etc)
+  ^ This could be easily filled by having a module that supports it.
+- "Mail me a daily digest of news" - in config, easy to do...
+
+: Portability 
+- Ensure that rssnews is kosher between different DB implementations (mysql, postgres, etc?)
+
+---[ Done and Done! ]-----------------------------------------------------------
+- news searching, search for any given keyword under the listings of news
+- Use rssnews.conf to define whether the auth is based on default, .htaccess, or other?  Currently, the only auth methods are htaccess and default.
+- Modularity. WEEEEEEEE!

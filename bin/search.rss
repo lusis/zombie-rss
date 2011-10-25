@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN"
+            "http://my.netscape.com/publish/formats/rss-0.91.dtd">
+<rss version="0.91">
+<channel>
+<title>search.cpan.org</title>
+<link>http://search.cpan.org</link>
+<description>The CPAN search site</description>
+<language>en</language>
+<image>
+<title>searchDOTcpan</title>
+<url>http://search.cpan.org/s/img/cpanrdf.gif</url>
+<link>http://search.cpan.org</link>
+<width>88</width>
+<height>31</height>
+<description>All Modules, All the time</description>
+</image>
+<item>
+<title>Time-Travel-0.01</title>
+<link>http://search.cpan.org/author/ROMM/Time-Travel-0.01</link>
+</item>
+<item>
+<title>Paw-0.54</title>
+<link>http://search.cpan.org/author/UGANSERT/Paw-0.54</link>
+</item>
+<item>
+<title>String-Downgrade-0.02</title>
+<link>http://search.cpan.org/author/DYACOB/String-Downgrade-0.02</link>
+</item>
+<item>
+<title>kif-1.02</title>
+<link>http://search.cpan.org/author/MUNROER/kif-1.02</link>
+</item>
+<item>
+<title>Net-LDAP-Express-0.02</title>
+<link>http://search.cpan.org/author/BRONTO/Net-LDAP-Express-0.02</link>
+</item>
+<item>
+<title>Algorithm-Evolve-0.02</title>
+<link>http://search.cpan.org/author/ROSULEK/Algorithm-Evolve-0.02</link>
+</item>
+<item>
+<title>Queue-Base-1.01</title>
+<link>http://search.cpan.org/author/ARPADF/Queue-Base-1.01</link>
+</item>
+<item>
+<title>Mail-Transport-Dbx-0.04</title>
+<link>http://search.cpan.org/author/VPARSEVAL/Mail-Transport-Dbx-0.04</link>
+</item>
+<item>
+<title>Encode-HanConvert-0.26</title>
+<link>http://search.cpan.org/author/AUTRIJUS/Encode-HanConvert-0.26</link>
+</item>
+<item>
+<title>HTTP-MHTTP-0.13</title>
+<link>http://search.cpan.org/author/PIERS/HTTP-MHTTP-0.13</link>
+</item>
+<item>
+<title>Bundle-ePortal-0.02</title>
+<link>http://search.cpan.org/author/RUSAKOV/Bundle-ePortal-0.02</link>
+</item>
+<item>
+<title>CGI-Kwiki-PerlPkgFormatter-0.0.3</title>
+<link>http://search.cpan.org/author/JFITZ/CGI-Kwiki-PerlPkgFormatter-0.0.3</link>
+</item>
+</channel>
+</rss>
+
+

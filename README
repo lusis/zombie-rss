@@ -1,0 +1,75 @@
+Yadda yadda, I got bored and came up with ideas...
+
+And now on to disorganized ideas, they're sllightly grouped by lots of hyphens.
+
+
+--------------------------------------------------------------------------------
+
+Allow "admins" to add URLs of RSS's for different sites, adding it under 
+a given category perhaps? Adding categories if categories are used.. 
+Suggest categorizing if there are too many news listings.
+
+What else?
+
+--------------------------------------------------------------------------------
+
+Use the <channel> tag to read all of the news sites available. Each RSS 
+should have one near the top describing the page, etc... for example:
+
+<channel>
+   <title>Slashdot: News for nerds, stuff that matters</title> 
+   <link>http://slashdot.org/</link> 
+   <description>News for nerds, stuff that matters</description> 
+</channel>
+
+
+Should an image be used? Random image sizes might make for bad form layout. 
+
+<image>
+   <title>Slashdot: News for nerds, stuff that matters</title> 
+   <url>http://images.slashdot.org/topics/topicslashdot.gif</url> 
+   <link>http://slashdot.org/</link> 
+</image>
+
+
+Easy enough, right? :)
+
+
+--------------------------------------------------------------------------------
+
+
+As far as crontab goes, should this thing attempt to archive stories? 
+Sure it might become space-intensive, but would it be worth it to have a 
+backlog? 
+
+Crontab shenanigans -
+   download all the new rss/rdf/xml news batches and update the sql backend with
+   the new articles.
+
+   Allow users to request updates? - Possible, allow only one update per hour
+   ? Or actually update the news shit every hour? every 6 hours?
+
+   use LWP for downloading?
+   *** Save the files after use?
+
+
+Allow flexible methods of user authentication, so that it's more ... 
+flexible (kerberos, general php stuff authorization, whatnot...)
+As such, require users, allow the admin(s) to link to a "signup" page. 
+Have the config file for this newswhore determine the username based on 
+the admin/whatever's preferences. Certain enables for htaccess 
+authorization, OtherAuth(tm) so that it'll integrate to other sites flawlessly.
+
+
+--------------------------------------------------------------------------------
+
+
+Settings for the users?
+
++ How to determine if the news is read/viewed? [User Settable]
+   - If the news article topic/etc has been displayed, mark it as viewed
+   - If the article link has been clicked, mark it as viewed
+
++ What sites to solicite? [User Settable]
+   - Hook you up with mad checkboxes... 
+

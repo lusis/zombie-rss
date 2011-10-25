@@ -1,0 +1,26 @@
+How do I write modules?
+-----------------------
+
+They're mostly simple. All a module does is take data sent to it and parse it. 
+There are a few requirements that a module must follow:
+
+1) It must have a sub named MODULENAME_parse_data. For example, the fark.com
+   module has the sub, fark_parse_data. The naming convention must follow the
+   same as is the file name. So, the filename is fark.pl (case sensitive, duh)
+
+2) It must return an array of hash references. Again, check the code in any
+   of the current modules. The keys in each hash can be link, title, and descr.
+   Each of these describes itself.
+
+3) The MODULE_parse_data sub is passed 3 variables for your pleasure:
+   a DBI reference, the hashref to the sql data for this news source, and
+   finally the raw source content itself (html, xml, or other)
+
+Scenario:
+  The fark.pl module is loaded. fark_parse_data() is called. It uses the
+  third argument, the raw content, and parses it. It pushes hashrefs into 
+  an array and returns it after it has parsed all of the new articles.
+
+This howto is mostly vague, but after reading it you should be able to discern what the modules are actually doing.
+
+  
