@@ -1,0 +1,6 @@
+#Example crontab file for RSSNews.
+#
+#This example will update your sources every 10 minutes
+#$Id: crontab.example,v 1.4 2002/12/24 06:46:04 psionic Exp $
+
+0,15,30,45 * * * * /usr/home/psionic/public_html/news/periodic.sh

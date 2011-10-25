@@ -1,9 +1,0 @@
-- locals[:feeds].each do |feed|
-- feed_entries = feed.feed_entries
-  %p
-  %h2 #{feed.url}
-  %p
-  - feed_entries.each do |entry|
-    %a{:href => "#{entry.urls.first}"} #{entry.title}
-    %p
-    #{entry.content}

@@ -1,0 +1,4 @@
+Options +ExecCGI
+#AddHandler perl-script .pl
+AddHandler cgi-script .pl
+DirectoryIndex index.pl
