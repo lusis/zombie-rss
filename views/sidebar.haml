@@ -7,10 +7,3 @@
     %div{:class => "span8", :data => {:feed_id => feed.key}}
       %strong= "- #{feed_title}"
       %span{:class => "label notice"}= "#{feed.feed_entries.size}"
-
-%div{:class => 'content', :id => 'feed-display-area'}
-  %div{:class => 'row'}
-    - locals[:feeds].each do |feed|
-      - feed.feed_entries.each do |feed_entry|
-        %div{:class => 'span16', :id => feed_entry.key}
-          %a{:href => feed_entry.urls.first}= feed_entry.title.chomp

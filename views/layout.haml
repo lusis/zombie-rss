@@ -1,40 +1,36 @@
+!!! HTML
 %html
   %head
+
     %title ZombieRss Feed Reader
     %link{:rel => "stylesheet", :href => "/bootstrap.css"}
+    %style{:type => "text/css"}
+      :plain
+        body {
+          padding-top: 60px;
+        }
+    %script{:src => "/js/jquery.min.js"}
+    %script{:src => "/js/zombie.js"}
 
-    %script{:src => "/js/jquery-min.js"}
-    %script{:src => "/js/bootstrap-modal.js"}
-    %script{:src => "/js/bootstrap-alerts.js"}
-    %script{:src => "/js/bootstrap-twipsy.js"}
-    %script{:src => "/js/bootstrap-popover.js"}
-    %script{:src => "/js/bootstrap-dropdown.js"}
-    %script{:src => "/js/bootstrap-scrollspy.js"}
-    %script{:src => "/js/boostrap-tabs.js"}
+  %body
 
-    %body
+    %div{:class => "topbar"}
+      %div{:class => "topbar-inner"}
+        %div{:class => "container-fluid"}
+          %a{:class => "brand", :href => "/"} ZombieRss
+          %ul{:class => "nav"}
+            %li
+              %a{:href => "/about"} About
 
-      %div{:class => "topbar"}
-        %div{:class => "fill"}
-          %div{:class => "container"}
-            %a{:class => "brand", :href => "/"} ZombieRss
-            %ul{:class => "nav"}
-              %li
-                %a{:href => "/"} All Feeds
-              %li
-                %a{:href => "/add"} Add Feed
-              %li
-                %a{:href => "/about"} About
+          %form{:class => "pull-right"}
+            %input{:class => "input-xlarge", :type => "text"}
+            %button{:class => "btn disabled", :type => "submit"} Add Feed
 
-      %div{:class => "container"}
-        %div{:class => "content"}
-          %div{:class => "page-header"}
-            %h1
-              Woot!
-        = yield
+    %div{:class => "container-fluid"}
+      = partial :sidebar, {:feeds => locals[:feeds]}
+      = partial locals[:content_body], {:feeds => locals[:feeds]}
 
-        %footer
-          %p{:align => "center"}
-            &copy; John E. Vincent (@lusis) /
-            %a{:href => "http://blog.lusis.org"}
-              blog.lusis.org
+    %footer
+      %p{:align => "center"}
+        &copy; John E. Vincent (@lusis) /
+        %a{:href => "http://blog.lusis.org"} blog.lusis.org

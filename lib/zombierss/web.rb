@@ -1,6 +1,13 @@
 module ZombieRss
 
   class Web < ::Sinatra::Base
+    module Partials
+      def partial( page, variables={} )
+        haml page.to_sym, {layout:false}, variables
+      end
+    end
+    helpers Partials
+    zombie_feeds = ZombieRss::Feed.all
 
     configure do
       set :static, true
@@ -13,13 +20,17 @@ module ZombieRss
     end
 
     get '/' do
-      feeds = ZombieRss::Feed.all
-      haml :index, :format => :html5, :locals => {:feeds => feeds}
+      haml :index, :format => :html5, :locals => {:feeds => zombie_feeds, :content_body => 'content_area'}
     end
 
-    get '/feed/:feed_id/?' do
-      
+    get '/test_page' do
+      haml :test_page, :format => :html5, :layout => false
     end
+
+    get '/about' do
+      haml :about, :format => :html5, :locals => {:feeds => zombie_feeds, :content_body => 'about'}
+    end
+
   end
 
 end

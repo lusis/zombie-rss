@@ -1,0 +1,56 @@
+!!! HTML
+%html
+  %head
+
+    %title ZombieRss Feed Reader
+    %link{:rel => "stylesheet", :href => "/bootstrap.css"}
+    %style{:type => "text/css"}
+      :plain
+        body {
+          padding-top: 60px;
+        }
+    %script{:src => "/js/jquery.min.js"}
+    %script{:src => "/js/zombie.js"}
+
+  %body
+
+    %div{:class => "topbar"}
+      %div{:class => "topbar-inner"}
+        %div{:class => "container-fluid"}
+          %a{:class => "brand", :href => "#"} ZombieRss
+          %ul{:class => "nav"}
+            %li{:class => "active"}
+              %a{:href => "#"} All Feeds
+            %li
+              %a{:href => "#"} About
+
+          %form{:class => "pull-right"}
+            %input{:class => "input-xlarge", :type => "text"}
+            %button{:class => "btn", :type => "submit"} Add Feed
+
+    %div{:class => "container-fluid"}
+      %div{:class => "sidebar"}
+        %div{:class => "well"}
+          %h5 Feeds
+          %ul{:id => "z-feed-list"}
+            %li
+              %span{:class => "label notice", :id => "z-feed-1"} My Unread Feed
+            %li
+              %span{:class => "label important", :id => "z-feed-2"} My Broken Feed
+            %li
+              %span{:class => "label", :id => "z-feed-3"} My Read Feed
+            %li
+              %span{:class => "label success", :id => "z-feed-4"} My New Feed
+
+      %div{:class => "content", :id => 'feed-display-area'}
+        %h1{:id => "feed-title"}
+        %br
+        %div{:class => 'row'}
+          %div{:class => 'span16', :id => 'feed-entry-1'} Feed Entry 1
+          %div{:class => 'span16', :id => 'feed-entry-2'} Feed Entry 2
+          %div{:class => 'span16', :id => 'feed-entry-3'} Feed Entry 3
+
+        %footer
+          %p{:align => "center"}
+            &copy; John E. Vincent (@lusis) /
+            %a{:href => "http://blog.lusis.org"} blog.lusis.org
