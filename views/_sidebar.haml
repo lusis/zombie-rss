@@ -4,6 +4,6 @@
   - require 'uri'
   - locals[:feeds].each do |feed|
     - feed_title = feed.title || URI.parse(feed.feed_url).host
-    %div{:class => "span8", :data => {:feed_id => feed.key}}
-      %strong= "- #{feed_title}"
+    %div{:class => "span8"}
+      %strong{:data => {:feed_id => feed.key }}= "- #{feed_title}"
       %span{:class => "label notice"}= "#{feed.feed_entries.size}"

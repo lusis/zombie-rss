@@ -36,8 +36,8 @@ module ZombieRss
       haml :feeds, :format => :html5, :locals => {:feeds => zombie_feeds}
     end
 
-    post '/feed' do
-      feed_entires = ZombieRss::Feed.find(params[:feed_id]).feed_entries
+    post '/feed/:feed_id' do |feed_id|
+      feed_entries = ZombieRss::Feed.find(feed_id).feed_entries
       if feed_entries.nil?
         haml :_unknown_feed, :format => :html5, :layout => false
       else

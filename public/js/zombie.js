@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  $("[id^='z-feed-']").delegate("span", "click", function() {
-    var feed_id = $(this).attr('id');
-    $("#feed-title").replaceWith(
-    "<h1 id='feed-title'>Feed " + feed_id + "</h1>"
-    );
-  });
+  $(".span8").delegate("strong", "click", function() {
+      var feed_id = $(this).attr('data-feed_id');
+      $.post('/feed/'+feed_id, function(data) {
+        $("#feed-display-area").replaceWith(data);
+      });
+    });
 });
