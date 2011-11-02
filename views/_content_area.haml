@@ -1,6 +1,3 @@
 %div{:class => 'content', :id => 'feed-display-area'}
-  %div{:class => 'row'}
-    - locals[:feeds].each do |feed|
-      - feed.feed_entries.each do |feed_entry|
-        %div{:class => 'span16', :id => feed_entry.key}
-          %a{:href => feed_entry.urls.first}= feed_entry.title.chomp
+  %div{:class => 'row'} Select a feed.
+
