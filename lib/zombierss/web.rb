@@ -24,10 +24,6 @@ module ZombieRss
       haml :about, :format => :html5
     end
 
-    get '/test_page' do
-      haml :test_page, :format => :html5, :layout => false
-    end
-
     get '/about' do
       haml :about, :format => :html5
     end
