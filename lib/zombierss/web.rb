@@ -7,6 +7,7 @@ module ZombieRss
       end
     end
     helpers Partials
+
     zombie_feeds = ZombieRss::Feed.all
 
     configure do
@@ -20,7 +21,7 @@ module ZombieRss
     end
 
     get '/' do
-      haml :index, :format => :html5, :locals => {:feeds => zombie_feeds, :content_body => 'content_area'}
+      haml :about, :format => :html5
     end
 
     get '/test_page' do
@@ -28,7 +29,11 @@ module ZombieRss
     end
 
     get '/about' do
-      haml :about, :format => :html5, :locals => {:feeds => zombie_feeds, :content_body => 'about'}
+      haml :about, :format => :html5
+    end
+
+    get '/feeds' do
+      haml :feeds, :format => :html5, :locals => {:feeds => zombie_feeds}
     end
 
   end

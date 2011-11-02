@@ -20,6 +20,8 @@
           %a{:class => "brand", :href => "/"} ZombieRss
           %ul{:class => "nav"}
             %li
+              %a{:href => "/feeds"} Feeds
+            %li
               %a{:href => "/about"} About
 
           %form{:class => "pull-right"}
@@ -27,8 +29,7 @@
             %button{:class => "btn disabled", :type => "submit"} Add Feed
 
     %div{:class => "container-fluid"}
-      = partial :sidebar, {:feeds => locals[:feeds]}
-      = partial locals[:content_body], {:feeds => locals[:feeds]}
+      = yield
 
     %footer
       %p{:align => "center"}
