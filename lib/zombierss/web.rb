@@ -21,7 +21,7 @@ module ZombieRss
     end
 
     get '/' do
-      haml :about, :format => :html5
+      haml :home, :format => :html5, :locals => {:feeds => zombie_feeds}
     end
 
     get '/about' do
