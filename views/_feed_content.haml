@@ -2,6 +2,7 @@
   %div{:class => 'row'}
     - locals[:feed_entries].each do |feed_entry|
       %div{:class => 'span16', :id => feed_entry.key}
-        %h2= feed_entry.title.chomp
+        %h2{:class => 'label'}= feed_entry.title
+        %a{:href => feed_entry.urls.first} Original
         %p= feed_entry.content
         %hr

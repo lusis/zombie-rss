@@ -1,5 +1,6 @@
 %div{:class => "sidebar"}
   %h4 Feeds
+  %hr
   %div{:class => 'row', :id => 'z-feed-list'}
   - require 'uri'
   - locals[:feeds].each do |feed|
@@ -8,4 +9,4 @@
       %span{:class => "label notice"}= "#{feed.feed_entries.size} "
       %strong
       %a{:data => {:feed_id => feed.key }}
-        %b= "- #{feed_title}"
+        %b= " #{feed_title}"

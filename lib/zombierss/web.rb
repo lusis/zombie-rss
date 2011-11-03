@@ -8,8 +8,6 @@ module ZombieRss
     end
     helpers Partials
 
-    zombie_feeds = ZombieRss::Feed.all
-
     configure do
       set :static, true
       set :views, File.join(File.expand_path(File.dirname(__FILE__)), "../..", "views")
@@ -21,6 +19,7 @@ module ZombieRss
     end
 
     get '/' do
+      zombie_feeds = ZombieRss::Feed.all
       haml :home, :format => :html5, :locals => {:feeds => zombie_feeds}
     end
 
@@ -29,6 +28,7 @@ module ZombieRss
     end
 
     get '/feeds' do
+      zombie_feeds = ZombieRss::Feed.all
       haml :feeds, :format => :html5, :locals => {:feeds => zombie_feeds}
     end
 
@@ -38,6 +38,29 @@ module ZombieRss
         haml :_unknown_feed, :format => :html5, :layout => false
       else
         haml :_feed_content, :format => :html5, :locals => {:feed_entries => feed_entries}, :layout => false
+      end
+    end
+
+    put '/feed/:feed_url' do |feed_url|
+    # This needs to be moved out. POC for now.
+      begin
+        feed = FeedNormalizer::FeedNormalizer.parse open(feed_url)
+        f = ZombieRss::Feed.find(Digest::SHA1.hexdigest(feed_url)) || ZombieRss::Feed.new
+        f.url = feed.urls.first
+        f.title = feed.title
+        f.description = feed.description
+        f.feed_url = feed_url
+        f.save
+
+        feed.entries.each do |entry|
+          id = entry.id || entry.urls.first
+          fe = ZombieRss::Feed.find(Digest::SHA1.hexdigest(id)) || ZombieRss::FeedEntry.new(:authors => entry.authors, :categories => entry.categories, :content => entry.content, :date_published => entry.date_published, :title => entry.title, :urls => entry.urls, :entry_url => id)
+          f.feed_entries << fe
+          f.save
+        end
+        haml :_feed_add_success, :format => :html5, :layout => false
+      rescue Exception => e
+        haml :_feed_add_error, :format => :html5, :layout => false
       end
     end
 
