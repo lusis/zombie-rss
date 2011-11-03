@@ -1,8 +1,11 @@
 %div{:class => 'content', :id => 'feed-display-area'}
+  %h1= locals[:feed].title || URI.parse(locals[:feed].feed_url).host
+  %hr
   %div{:class => 'row'}
     - locals[:feed_entries].each do |feed_entry|
       %div{:class => 'span16', :id => feed_entry.key}
-        %h2{:class => 'label'}= feed_entry.title
+        %h2{:class => 'label'}= "#{feed_entry.title}"
+        %h4= "#{feed_entry.date_published}"
         %a{:href => feed_entry.urls.first} Original
         %p= feed_entry.content
         %hr

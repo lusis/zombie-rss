@@ -33,17 +33,21 @@ module ZombieRss
       haml :feeds, :format => :html5, :locals => {:feeds => zombie_feeds}
     end
 
+    # All of the stuff below is MVP right now
+    # Yes, this needs to be done async
+    # Yes, it needs to be DRY'd out
     post '/feed/:feed_id' do |feed_id|
-      feed_entries = ZombieRss::Feed.find(feed_id).feed_entries
+      feed = ZombieRss::Feed.find(feed_id)
+      feed_entries = feed.feed_entries.sort {|a,b| b.date_published <=> a.date_published }
+      #feed_entries = feed.feed_entries
       if feed_entries.nil?
         haml :_unknown_feed, :format => :html5, :layout => false
       else
-        haml :_feed_content, :format => :html5, :locals => {:feed_entries => feed_entries}, :layout => false
+        haml :_feed_content, :format => :html5, :locals => {:feed => feed, :feed_entries => feed_entries}, :layout => false
       end
     end
 
     put '/feed/:feed_url' do |feed_url|
-    # This needs to be moved out. POC for now.
       feed_url = CGI.unescape(feed_url)
       feed = ::FeedNormalizer::FeedNormalizer.parse open(feed_url)
       f = ZombieRss::Feed.find(Digest::SHA1.hexdigest(feed_url)) || ZombieRss::Feed.new
@@ -52,7 +56,7 @@ module ZombieRss
       f.description = feed.description
       f.feed_url = feed_url
       f.save
-
+      
       feed.entries.each do |entry|
         id = entry.id || entry.urls.first
         fe = ZombieRss::Feed.find(Digest::SHA1.hexdigest(id)) || ZombieRss::FeedEntry.new(:authors => entry.authors, :categories => entry.categories, :content => entry.content, :date_published => entry.date_published, :title => entry.title, :urls => entry.urls, :entry_url => id)

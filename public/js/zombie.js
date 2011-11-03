@@ -8,7 +8,8 @@ $(document).ready(function() {
 });
 
 $(function() {
-  $("a[rel=popover]").popover({offset: -10}).click(function(e) {
+//  $("a[rel=popover]").popover({offset: -10}).click(function(e) {
+  $("a[rel=popover]").popover({offset: 10, placement: 'below'}).click(function(e) {
       e.preventDefault()
     })
 });
