@@ -10,6 +10,9 @@
           padding-top: 60px;
         }
     %script{:src => "/js/jquery.min.js"}
+    - %w{modal alerts dropdown scrollspy tabs twipsy popover}.each do |filename|
+      %script{:src => "/js/bootstrap-#{filename}.js"}
+    %script{:src => "/js/zombie.js"}
     %script{:src => "/js/zombie.js"}
 
   %body
@@ -22,11 +25,14 @@
             %li
               %a{:href => "/feeds"} Feeds
             %li
+              %a{:href => "/update"} Update
+            %li
               %a{:href => "/about"} About
 
-          %form{:class => "pull-right"}
-            %input{:class => "input-xlarge", :type => "text"}
-            %button{:class => "btn disabled", :type => "submit"} Add Feed
+          %form{:class => "pull-right", :id => "add_feed_form"}
+            %input{:class => "input-xlarge", :type => "text", :id => "add_feed_input"}
+            //%button{:class => "btn disabled", :type => "submit", :id => "add_feed_button"} Add Feed
+            %a{:href => "#", :class =>"btn", :rel => "popover", :data => {:content => "Soon grasshopper!", "original-title" => "Almost ready"}} Add Feed
 
     %div{:class => "container-fluid"}
       = yield

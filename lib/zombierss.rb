@@ -1,6 +1,8 @@
 require 'ripple'
 require 'digest/sha1'
 require 'sinatra/base'
+require 'feed-normalizer'
+require 'cgi'
 require "zombierss/version"
 require "zombierss/feed"
 require "zombierss/feed_entry"
