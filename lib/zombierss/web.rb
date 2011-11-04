@@ -1,6 +1,7 @@
 module ZombieRss
 
   class Web < ::Sinatra::Base
+    use ::Rack::Session::Cookie
     module Partials
       def partial( page, variables={} )
         haml page.to_sym, {layout:false}, variables
@@ -88,7 +89,7 @@ module ZombieRss
       end
       redirect '/feeds'
     end
-
+   
   end
 
 end

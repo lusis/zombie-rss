@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "ripple"
   s.add_runtime_dependency "feed-normalizer"
   s.add_runtime_dependency "haml"
+  s.add_runtime_dependency "omniauth-openid"
 end
