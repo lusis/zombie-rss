@@ -4,6 +4,7 @@ require 'zombierss'
 require 'sinatra'
 require 'haml'
 require 'uri'
+require 'celluloid'
 
 set :run, false
 

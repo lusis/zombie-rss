@@ -31,10 +31,10 @@
 
           %form{:class => "pull-right", :id => "add_feed_form"}
             %input{:class => "input-xlarge", :type => "text", :id => "add_feed_input"}
-            //%button{:class => "btn disabled", :type => "submit", :id => "add_feed_button"} Add Feed
-            %a{:href => "#", :class =>"btn", :rel => "popover", :data => {:content => "Soon grasshopper!", "original-title" => "Almost ready"}} Add Feed
+            %a{:href => "#", :class =>"btn info"} Add Feed
 
     %div{:class => "container-fluid"}
+      %div{:id => "z-alert-bar"}
       = yield
 
     %footer

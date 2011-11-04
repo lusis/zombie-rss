@@ -5,8 +5,17 @@
   - require 'uri'
   - locals[:feeds].each do |feed|
     - feed_title = feed.title || URI.parse(feed.feed_url).host
+    - case feed.feed_entries.size
+      - when 1..10
+        - label_type = "notice"
+      - when 11..20
+        - label_type = "warning"
+      - when 21..100
+        - label_type = "important"
+      - else
+        - label_type = "default"
     %div{:class => "span8"}
-      %span{:class => "label notice"}= "#{feed.feed_entries.size} "
+      %span{:class => "label #{label_type}"}= "#{feed.feed_entries.size} "
       %strong
       %a{:data => {:feed_id => feed.key }}
-        %b= " #{feed_title}"
+        %b= " #{feed_title[0,20]}"
