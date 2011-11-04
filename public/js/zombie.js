@@ -1,9 +1,11 @@
 $(document).ready(function() {
   $(".span8").delegate("a", "click", function() {
+      $("a").removeClass("label");
       var feed_id = $(this).attr('data-feed_id');
       $.post('/feed/'+feed_id, function(data) {
         $("#feed-display-area").replaceWith(data);
       });
+      $(this).addClass("label");
     });
 
   $(".alert-message").alert();

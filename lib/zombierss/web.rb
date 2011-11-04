@@ -21,7 +21,8 @@ module ZombieRss
 
     get '/' do
       zombie_feeds = ZombieRss::Feed.all
-      haml :home, :format => :html5, :locals => {:feeds => zombie_feeds}
+      sorted_feeds = zombie_feeds.sort {|a,b| a.feed_entries.size <=> b.feed_entries.size}
+      haml :home, :format => :html5, :locals => {:feeds => sorted_feeds}
     end
 
     get '/about' do
@@ -30,7 +31,8 @@ module ZombieRss
 
     get '/feeds' do
       zombie_feeds = ZombieRss::Feed.all
-      haml :feeds, :format => :html5, :locals => {:feeds => zombie_feeds}
+      sorted_feeds = zombie_feeds.sort {|a,b| a.feed_entries.size <=> b.feed_entries.size}
+      haml :feeds, :format => :html5, :locals => {:feeds => sorted_feeds}
     end
 
     # All of the stuff below is MVP right now
