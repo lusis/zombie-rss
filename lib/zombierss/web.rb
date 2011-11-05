@@ -62,10 +62,19 @@ module ZombieRss
       end
     end
 
+    get '/feed/:feed_id' do |feed_id|
+      feed = ZombieRss::Feed.find(feed_id)
+      feed_entries = feed.feed_entries.sort {|a,b| b.date_published <=> a.date_published }
+      if feed_entries.nil?
+        haml :_unknown_feed, :format => :html5
+      else
+        haml :_feed_content, :format => :html5, :locals => {:feed => feed, :feed_entries => feed_entries}
+      end
+    end
+
     post '/feed/:feed_id' do |feed_id|
       feed = ZombieRss::Feed.find(feed_id)
       feed_entries = feed.feed_entries.sort {|a,b| b.date_published <=> a.date_published }
-      #feed_entries = feed.feed_entries
       if feed_entries.nil?
         haml :_unknown_feed, :format => :html5, :layout => false
       else

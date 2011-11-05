@@ -1,5 +1,25 @@
+// Feed specific modal
+- altered_feed_title = locals[:feed].title || URI.parse(locals[:feed].feed_url).host
+%div{:id => "modal-feed-edit", :class => "modal hide fade", :style => {:display => "none"}}
+  %a{:href => "#", :class => "close"} x
+  %h3= "Edit Feed - #{altered_feed_title}"
+  %h6 (This isn't working yet)
+  %form
+    %div{:class => "modal-body"}
+      %label{:for => "form-feed-name"}= "Name"
+      %div{:class => "input"}
+        %input{:type => "text", :class => "xlInput", :id => "form-feed-name", :name => "form-feed-name", :value => altered_feed_title}
+      %label{:for => "form-feed-url"} URL 
+      %div{:class => "input"}
+        %input{:type => "text", :class => "xlInput", :id => "form-feed-url", :name => "form-feed-url", :value => locals[:feed].feed_url}
+    %div{:class => "modal-footer"}
+      %input{:class => "btn primary", :type => "submit"}
+      %button{:class => "btn", :type => "reset"} Cancel
+
+// Feed content display area
 %div{:class => 'content', :id => 'feed-display-area'}
-  %h1= locals[:feed].title || URI.parse(locals[:feed].feed_url).host
+  %h1= altered_feed_title
+  %btn{:href => "#", :data => {"controls-modal" => "modal-feed-edit", "backdrop" => "true", "keyboard" => "true"}, :class => "btn"} Edit Feed
   %hr
   %div{:class => 'row'}
     - locals[:feed_entries].each do |feed_entry|

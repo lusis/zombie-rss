@@ -9,8 +9,10 @@
       - when 1..10
         - label_type = "notice"
       - when 11..20
-        - label_type = "warning"
+        - label_type = "success"
       - when 21..100
+        - label_type = "warning"
+      - when 101..1000
         - label_type = "important"
       - else
         - label_type = "default"

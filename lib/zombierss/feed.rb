@@ -10,6 +10,7 @@ module ZombieRss
     property :image,        String
     property :url,          String
     property :title,        String
+    property :date_added,   Time, :default => proc { Time.now }
     property :feed_url,     String, :presence => true
 
     many :feed_entries, :class_name => "ZombieRss::FeedEntry"
